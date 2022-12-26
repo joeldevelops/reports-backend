@@ -12,7 +12,8 @@ const auth = new Auth();
 const router = Router();
 
 // Allow access without auth.
-router.post("/users/register", async (req, res) => {
+// POST /users/register
+router.post("/register", async (req, res) => {
   const user: User = req.body;
 
   let createdUser;
@@ -33,7 +34,8 @@ router.post("/users/register", async (req, res) => {
 // Only validate jwt past this point
 router.use(auth.validateJwt());
 
-router.get("/users/:id", auth.isUserOrAdmin(), async (req, res) => {
+// GET /users/:id
+router.get("/:id", auth.isUserOrAdmin(), async (req, res) => {
   const userId: string = req.params.id;
 
   let user;
@@ -47,7 +49,8 @@ router.get("/users/:id", auth.isUserOrAdmin(), async (req, res) => {
   return res.json(user);
 });
 
-router.put("/users/:id", auth.isUserOrAdmin(), async (req, res) => {
+// PUT /users/:id
+router.put("/:id", auth.isUserOrAdmin(), async (req, res) => {
   const userId: string = req.params.id;
   const userUpdates: User = req.body;
 

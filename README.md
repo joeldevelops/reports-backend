@@ -5,12 +5,15 @@
 - [x] Setup PG/Sequelize
 - [x] Docker/compose
 - [ ] Bun
-- [ ] Comments
+- [x] Comments
 - [ ] Threaded comments
+- [ ] Groups
 - [ ] Integration tests
 - [ ] Linting
 
 # Setup
+
+### Local Dev
 
 To run, the following commands will start the application and dependencies:
 
@@ -19,7 +22,7 @@ npm run pg
 npm run start:dev
 ```
 
-## Migrations
+### Migrations
 
 Typically with a fresh db, you will need to run the migrations first:
 
@@ -27,7 +30,7 @@ Typically with a fresh db, you will need to run the migrations first:
 npm run db:migrate
 ```
 
-## Seeding the Database
+### Seeding the Database
 
 Must be done after migrations
 
@@ -35,7 +38,7 @@ Must be done after migrations
 npm run db:seed
 ```
 
-## Docker
+### Docker
 For initial docker setup with docker compose, run:
 ```
 npm run compose:build

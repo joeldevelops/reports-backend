@@ -4,7 +4,8 @@ import * as authService from "./auth.service";
 
 const router = Router();
 
-router.post("/auth", async (req, res) => {
+// POST /auth
+router.post("/", async (req, res) => {
   const login = req.body;
 
   let token;
