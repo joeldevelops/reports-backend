@@ -2,10 +2,10 @@
 
 ## TODO
 
-- [] Setup PG/Sequelize
-- [] Docker/compose
-- [] Bun
-- [] Comments
-- [] Threaded comments
-- [] Integration tests
-- [] Linting
+- [ ] Setup PG/Sequelize
+- [ ] Docker/compose
+- [ ] Bun
+- [ ] Comments
+- [ ] Threaded comments
+- [ ] Integration tests
+- [ ] Linting

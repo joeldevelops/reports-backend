@@ -1,22 +1,20 @@
-import { Router } from 'express';
+import { Router } from "express";
 
-import * as authService from './auth.service';
+import * as authService from "./auth.service";
 
 const router = Router();
 
-router.post('/v1/auth', async (req, res) => {
+router.post("/auth", async (req, res) => {
   const login = req.body;
 
   let token;
   try {
     token = await authService.comparePassword(login);
-  }
-  catch (e) {
+  } catch (e) {
     return res.status(400).send(e.message);
   }
 
-  return res
-    .send(token);
+  return res.send(token);
 });
 
 export default router;

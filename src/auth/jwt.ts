@@ -1,8 +1,8 @@
-import * as jwt from 'jsonwebtoken';
-import * as winston from 'winston';
-import config from '../config';
+import * as jwt from "jsonwebtoken";
+import * as winston from "winston";
+import config from "../config";
 
-const logger = winston.loggers.get('app-logger');
+const logger = winston.loggers.get("app-logger");
 
 export class Jwt {
   private key: string;
@@ -16,14 +16,10 @@ export class Jwt {
   async verify(token: string) {
     let decoded;
     try {
-      decoded = jwt.verify(
-        token,
-        this.key,
-        {
-          clockTolerance: 3,
-        })
-    }
-    catch (e) {
+      decoded = jwt.verify(token, this.key, {
+        clockTolerance: 3,
+      });
+    } catch (e) {
       logger.debug(e.message);
       throw new Error("Could not decode or verify token.");
     }
