@@ -14,8 +14,9 @@ const logger = winston.loggers.add("app-logger", {
   transports: [new winston.transports.Console()],
 });
 
-import authController from "./auth/auth.controller.v1";
-import usersController from "./users/users.controller.v1";
+import authRouter from "./auth";
+import commentsRouter from "./comments";
+import usersRouter from "./users";
 
 (async () => {
   let app = express();
@@ -26,9 +27,11 @@ import usersController from "./users/users.controller.v1";
   app.get("/liveness", (req, res) => res.json("ok"));
   app.get("/readiness", async (req, res) => res.json("ok"));
 
-  app.use("/api/v1", authController, usersController);
+  app.use("/api", authRouter, usersRouter, commentsRouter);
+
+  app.get("/", (req, res) => res.json("General Kenobi!"));
 
   app.listen(config.port, async () => {
-    console.log("App running on port: ", config.port);
+    logger.info("App running on port: ", config.port);
   });
 })();
