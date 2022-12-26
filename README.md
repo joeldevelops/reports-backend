@@ -6,7 +6,8 @@
 - [x] Docker/compose
 - [ ] Bun
 - [x] Comments
-- [ ] Threaded comments
+- [x] Threaded comments
+- [ ] Revisit Auth roles
 - [ ] Groups
 - [ ] Integration tests
 - [ ] Linting
