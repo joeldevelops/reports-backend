@@ -1,6 +1,7 @@
 import { Model, DataTypes } from "sequelize";
 
 import sequelize from ".";
+import thread from "./threads";
 
 // We will probably want models for documents and for groups
 // TODO: Relation to documents
@@ -30,5 +31,8 @@ comment.init(
     modelName: "comment",
   }
 );
+
+comment.hasMany(thread, { foreignKey: "parentId" });
+thread.belongsTo(comment, { foreignKey: "parentId" });
 
 export default comment;

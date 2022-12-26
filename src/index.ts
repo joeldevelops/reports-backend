@@ -16,6 +16,7 @@ const logger = winston.loggers.add("app-logger", {
 
 import authRouter from "./auth";
 import commentsRouter from "./comments";
+import threadsRouter from "./threads";
 import usersRouter from "./users";
 
 (async () => {
@@ -27,11 +28,11 @@ import usersRouter from "./users";
   app.get("/liveness", (req, res) => res.json("ok"));
   app.get("/readiness", async (req, res) => res.json("ok"));
 
-  app.use("/api", authRouter, usersRouter, commentsRouter);
+  app.use("/api", authRouter, usersRouter, commentsRouter, threadsRouter);
 
   app.get("/", (req, res) => res.json("General Kenobi!"));
 
   app.listen(config.port, async () => {
-    logger.info("App running on port: ", config.port);
+    logger.info("App running on port: " + config.port);
   });
 })();

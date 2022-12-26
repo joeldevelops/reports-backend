@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as winston from "winston";
 
-import { Auth } from "../auth";
+import { Auth } from "../auth/auth.middleware";
 
 import { DuplicateUserError, User, UserNotFoundError } from ".";
 import * as usersService from "./users.service";
