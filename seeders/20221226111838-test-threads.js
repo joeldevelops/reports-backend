@@ -24,7 +24,7 @@ module.exports = {
       },
       {
         content: 'Test Thread Comment 4',
-        parentId: 3,
+        parentThreadId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       }
