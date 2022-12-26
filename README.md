@@ -34,3 +34,20 @@ Must be done after migrations
 ```
 npm run db:seed
 ```
+
+## Docker
+For initial docker setup with docker compose, run:
+```
+npm run compose:build
+```
+
+After the initial build, you will be safe to use the following commands to bring it up/down:
+```
+npm run compose:up
+npm run compose:down
+```
+
+If you ever want to remove all data and start fresh:
+```
+npm run compose:nuke
+```
