@@ -10,7 +10,10 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "t:cov": "jest --coverage",
-    "pg": "docker run -d -p '5432:5432' -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root --name pg postgres"
+    "db:seed": "sequelize-cli db:seed:all",
+    "db:migrate": "sequelize-cli db:migrate",
+    "db:docker": "docker run -d -p '5432:5432' -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root --name pg postgres",
+    "pg": "npm run db:docker && npm run db:migrate && npm run db:seed"
   },
   "engines": {
     "node": "18.12.1"
