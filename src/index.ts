@@ -1,23 +1,21 @@
-import * as dotenv from 'dotenv';
-dotenv.config({ path: '../.env' });
+import * as dotenv from "dotenv";
+dotenv.config({ path: "../.env" });
 
-import * as express from 'express';
-import * as cors from 'cors';
-import { json } from 'body-parser';
+import * as express from "express";
+import * as cors from "cors";
+import { json } from "body-parser";
 
-import config from './config';
+import config from "./config";
 
-import * as winston from 'winston';
-const logger = winston.loggers.add('app-logger', {
+import * as winston from "winston";
+const logger = winston.loggers.add("app-logger", {
   level: config.logLevel,
   format: winston.format.simple(),
-  transports: [
-    new winston.transports.Console()
-  ]
+  transports: [new winston.transports.Console()],
 });
 
-import authController from './auth/auth.controller.v1';
-import usersController from './users/users.controller.v1';
+import authController from "./auth/auth.controller.v1";
+import usersController from "./users/users.controller.v1";
 
 (async () => {
   let app = express();
@@ -25,23 +23,12 @@ import usersController from './users/users.controller.v1';
   app.use(cors());
   app.use(json());
 
-  app.get('/liveness', (req, res) => res.json('ok'));
-  app.get('/readiness', async (req, res) => {
-    try {
-      // Connect to PGQL
-    }
-    catch (e) {
-      logger.error(e);
-      return res.status(500).json(e.message);
-    }
+  app.get("/liveness", (req, res) => res.json("ok"));
+  app.get("/readiness", async (req, res) => res.json("ok"));
 
-    res.json('ok');
-  });
+  app.use("/api/v1", authController, usersController);
 
-  app.use('/api/v1', authController);
-  app.use('/api/v1', usersController);
-
-  app.listen(config.port, async() => {
+  app.listen(config.port, async () => {
     console.log("App running on port: ", config.port);
   });
 })();

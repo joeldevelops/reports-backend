@@ -1,9 +1,11 @@
-export class User {
+export type User = {
   firstname: string;
   lastname: string;
   email: string;
   password: string;
-  
-  id?: string;
+  phone: string;
+  isAdmin: boolean;
+
+  id: number;
   role?: string;
-}
+};
