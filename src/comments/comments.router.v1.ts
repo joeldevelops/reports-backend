@@ -15,7 +15,7 @@ router.use(auth.validateJwt());
 
 // GET /comments
 // GET /comments?page=1
-router.get("/", auth.isUserOrAdmin(), async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const page: any = req.query.page;
         const comments = await commentsService.getComments(parseInt(page));
@@ -27,7 +27,7 @@ router.get("/", auth.isUserOrAdmin(), async (req, res) => {
 });
 
 // GET /comments/:id
-router.get("/:id", auth.isUserOrAdmin(), async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
         const comment = await commentsService.getCommentById(parseInt(req.params.id));
         res.status(200).send(comment);
@@ -38,7 +38,7 @@ router.get("/:id", auth.isUserOrAdmin(), async (req, res) => {
 });
 
 // POST /comments
-router.post("/", auth.isUserOrAdmin(), async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const newComment: CommentInput = req.body;
         const comment = await commentsService.createComment(newComment);

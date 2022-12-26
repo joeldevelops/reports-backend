@@ -14,6 +14,7 @@ const router = Router();
 router.use(auth.validateJwt());
 
 // GET /threads/:parentId
+// Will return a list of threads for a given comment OR parent thread comment
 router.get("/:parentId", async (req, res) => {
     try {
         const parentId: number = parseInt(req.params.parentId);

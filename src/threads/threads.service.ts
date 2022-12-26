@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import thread from "../models/threads";
 
 import { ThreadedComment, ThreadedCommentInput } from "./threads.types";
@@ -5,7 +6,10 @@ import { ThreadedComment, ThreadedCommentInput } from "./threads.types";
 export async function getThreadByParentId(parentId: number): Promise<ThreadedComment[]> {
     return thread.findAll({
         where: {
-            parentId,
+            [Op.or]: [
+                { parentId },
+                { parentThreadId: parentId },
+            ],
         },
         order: [
             ['createdAt', 'ASC'],

@@ -27,4 +27,6 @@ thread.init(
     }
 );
 
+thread.belongsTo(thread, { foreignKey: "parentThreadId" });
+
 export default thread;
